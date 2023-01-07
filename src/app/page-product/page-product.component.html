@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <button
+    type="button"
+    (click)="goCartProduct()"
+    class="btn btn-dark text-bg-warning position-relative"
+  >
+    Giỏ Hàng
+    <span
+      class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+    >
+      {{ cartProduct.length }}
+      <span class="visually-hidden">unread messages </span>
+    </span>
+  </button>
+  <h2 class="p-3">Danh sách sản phẩm</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let item of ListProducts">
+      <div class="card h-100" style="width: 18rem">
+        <img
+          src="{{ item.image }}"
+          class="card-img-top mt-4"
+          alt="{{ item.name }}"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Tên sản phẩm: {{ item.name }}</h5>
+          <p class="card-text">Giá bán: {{ item.price }} VNĐ</p>
+          <button
+            class="btn btn-primary"
+            (click)="addCart(item.id, item.name, item.price, item.image)"
+          >
+            Thêm vào giỏ hàng
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
